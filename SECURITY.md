@@ -101,7 +101,7 @@ Las actualizaciones de seguridad se publican en:
 
 - [OWASP Top 10](https://owasp.org/www-project-top-ten/)
 - [CWE - Common Weakness Enumeration](https://cwe.mitre.org/)
-- [GitHub Security Advisories](https://github.com/s3codecL/aegis-main/security/advisories)
+- [GitHub Security Advisories](https://github.com/s3codecL/aegisboard/security/advisories)
 
 ## 💬 Contacto
 
@@ -115,4 +115,4 @@ Para otras consultas:
 
 ---
 
-**Gracias por ayudar a mantener seguro a Aegis HUB** 🛡️
+**Gracias por ayudar a mantener seguro a Aegis Board** 🛡️
