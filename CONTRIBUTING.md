@@ -1,6 +1,6 @@
-# Contribuyendo a Aegis Dashboard
+# Contribuyendo a Aegis Board
 
-¡Gracias por tu interés en contribuir a Aegis Dashboard! Este documento proporciona las pautas para contribuir al proyecto.
+¡Gracias por tu interés en contribuir a Aegis Board! Este documento proporciona las pautas para contribuir al proyecto.
 
 ## 📋 Código de Conducta
 
