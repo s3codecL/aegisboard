@@ -13,6 +13,14 @@
 - **Repositorio**: Renombrado oficial a `aegisboard`.
 - **Documentación**: Estandarización completa de guías técnicas y de usuario.
 
+## [2.0.0] - 2026-03-05
+### Added
+- Rebranding to **Aegis Board**.
+- Client-side encryption for `localStorage` data (History, Favorites, Sessions).
+- Security hardening: Removed inline scripts and enforced strict CSP.
+- XSS remediation: Replaced `innerHTML` with `textContent` in critical areas.
+- Updated Chrome extension to match branding.
+
 ## [1.9.0] - 2026-02-27
 
 ### 🛡️ Update - Estabilización y Temas
