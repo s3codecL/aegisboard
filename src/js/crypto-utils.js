@@ -1,54 +1,51 @@
 /**
  * Aegis Board - Crypto Utilities
- * Provides lightweight encryption/obfuscation for LocalStorage data.
- * Note: This is client-side obfuscation. For true security, use Supabase/Backend.
+ * Provides lightweight obfuscation for LocalStorage data.
+ * Uses Unicode-safe Base64 encoding.
  */
 
 const CryptoUtils = {
-    // Simple key derived from a static seed (to be replaced by user-specific key in future)
     _seed: 'aegis-board-secure-v2',
 
     /**
-     * Encrypt data (Base64 + XOR simple obfuscation for performance/local use)
-     * @param {string} text 
-     * @returns {string}
+     * Encode data to Unicode-safe Base64
+     * @param {any} data - Object or string
+     * @returns {string} base64 encoded string
      */
-    encrypt: function (text) {
-        if (!text) return text;
+    encrypt: function (data) {
         try {
-            const data = typeof text === 'string' ? text : JSON.stringify(text);
-            let result = '';
-            for (let i = 0; i < data.length; i++) {
-                result += String.fromCharCode(data.charCodeAt(i) ^ this._seed.charCodeAt(i % this._seed.length));
-            }
-            return btoa(result);
+            const json = typeof data === 'string' ? data : JSON.stringify(data);
+            // Unicode-safe: encode to UTF-8 bytes then base64
+            return btoa(unescape(encodeURIComponent(json)));
         } catch (e) {
             console.error('Encryption error:', e);
-            return text;
+            // Fallback: plain JSON (will still be readable by decrypt)
+            return typeof data === 'string' ? data : JSON.stringify(data);
         }
     },
 
     /**
-     * Decrypt data
-     * @param {string} encoded 
-     * @returns {string|object}
+     * Decode Unicode-safe Base64
+     * @param {string} encoded
+     * @returns {object|string}
      */
     decrypt: function (encoded) {
         if (!encoded) return encoded;
         try {
-            const data = atob(encoded);
-            let result = '';
-            for (let i = 0; i < data.length; i++) {
-                result += String.fromCharCode(data.charCodeAt(i) ^ this._seed.charCodeAt(i % this._seed.length));
-            }
+            // Try base64 decode first
+            const json = decodeURIComponent(escape(atob(encoded)));
             try {
-                return JSON.parse(result);
-            } catch (e) {
-                return result;
+                return JSON.parse(json);
+            } catch {
+                return json;
             }
-        } catch (e) {
-            // If it's not encoded or fails, return original (graceful degradation)
-            return encoded;
+        } catch {
+            // Fallback: try plain JSON (for backward compatibility)
+            try {
+                return JSON.parse(encoded);
+            } catch {
+                return encoded;
+            }
         }
     }
 };
