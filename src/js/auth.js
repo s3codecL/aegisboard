@@ -12,8 +12,7 @@ const Auth = {
         sessionKey: 'aegisSession',
         usersKey: 'aegisUsers',
         tokenExpiry: 24 * 60 * 60 * 1000, // 24 horas
-        // Desactivar automáticamente si no hay keys configuradas
-        useRecaptcha: false,
+        useRecaptcha: true,
         defaultUser: {
             email: '[TU_EMAIL_DE_ADMIN]',
             password: '[TU_CONTRASEÑA_SEGURA]', // En producción, usar registro o OAuth
@@ -23,12 +22,10 @@ const Auth = {
         },
         oauth: {
             github: {
-                clientId: 'YOUR_GITHUB_CLIENT_ID' // Reemplazar con el ID de tu Configuración de Desarrollador de GitHub
-                // NOTA: El clientSecret NO debe estar en el frontend por seguridad.
+                clientId: 'Ov23ligFGZqvZYvTL2RF'
             },
             google: {
-                clientId: 'YOUR_GOOGLE_CLIENT_ID' // Reemplazar con el ID de Google Cloud Console
-                // NOTA: No se requiere clientSecret para el flujo implícito de Google.
+                clientId: '596461081924-jt3vmm6kjeldpcd58jp8vvuek2sj8g6e.apps.googleusercontent.com'
             }
         }
     },
@@ -95,14 +92,18 @@ const Auth = {
         const rememberMe = document.getElementById('remember-me').checked;
 
         // FORCE BYPASS: reCAPTCHA disabled
-        if (this.config.useRecaptcha && typeof grecaptcha !== 'undefined') {
-            const widgetId = window.loginWidgetId !== undefined ? window.loginWidgetId : 0;
-            const recaptchaResponse = grecaptcha.getResponse(widgetId);
-            if (!recaptchaResponse) {
-                const lang = localStorage.getItem('osintLanguage') || 'es';
-                const message = t('RECAPTCHA_ERROR', lang);
-                this.showAlert(message, 'danger');
-                return;
+        if (this.config.useRecaptcha && typeof grecaptcha !== 'undefined' && grecaptcha.getResponse) {
+            try {
+                const widgetId = window.loginWidgetId !== undefined ? window.loginWidgetId : 0;
+                const recaptchaResponse = grecaptcha.getResponse(widgetId);
+                if (!recaptchaResponse) {
+                    const lang = localStorage.getItem('osintLanguage') || 'es';
+                    const message = t('RECAPTCHA_ERROR', lang);
+                    this.showAlert(message, 'danger');
+                    return;
+                }
+            } catch (error) {
+                console.warn("reCAPTCHA check failed, bypassing...", error);
             }
         }
 
@@ -160,14 +161,18 @@ const Auth = {
         const acceptTerms = document.getElementById('accept-terms').checked;
 
         // FORCE BYPASS: reCAPTCHA disabled
-        if (this.config.useRecaptcha && typeof grecaptcha !== 'undefined') {
-            const widgetId = window.registerWidgetId !== undefined ? window.registerWidgetId : (window.loginWidgetId !== undefined ? 1 : 0);
-            const recaptchaResponse = grecaptcha.getResponse(widgetId);
-            if (!recaptchaResponse) {
-                const lang = localStorage.getItem('osintLanguage') || 'es';
-                const message = t('RECAPTCHA_ERROR', lang);
-                this.showAlert(message, 'danger');
-                return;
+        if (this.config.useRecaptcha && typeof grecaptcha !== 'undefined' && grecaptcha.getResponse) {
+            try {
+                const widgetId = window.registerWidgetId !== undefined ? window.registerWidgetId : (window.loginWidgetId !== undefined ? 1 : 0);
+                const recaptchaResponse = grecaptcha.getResponse(widgetId);
+                if (!recaptchaResponse) {
+                    const lang = localStorage.getItem('osintLanguage') || 'es';
+                    const message = t('RECAPTCHA_ERROR', lang);
+                    this.showAlert(message, 'danger');
+                    return;
+                }
+            } catch (error) {
+                console.warn("reCAPTCHA check failed, bypassing...", error);
             }
         }
 
