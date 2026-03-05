@@ -1,6 +1,6 @@
-# 🎉 Resumen de Implementación v1.9.0
+# 🎉 Resumen de Implementación v2.0.0
 
-## ✅ Tareas Completadas - v1.9.0 Stable
+## ✅ Tareas Completadas - v2.0.0 Stable
 
 ### 🛡️ Estabilización de Temas y UI
 - ✅ **Unificación de Temas**: Estandarización total en `osintTheme` aplicada a `<html>`.
@@ -20,7 +20,7 @@
 ## ✅ Tareas Completadas
 
 ### 1. ✅ Página de Login (`login.html`)
-**Archivo**: `e:\app\aegis-main\login.html`
+**Archivo**: `e:\app\aegisboard\login.html`
 
 **Características implementadas**:
 - ✅ Diseño moderno con glassmorphism y gradientes
@@ -39,7 +39,7 @@
 ---
 
 ### 2. ✅ Sistema de Autenticación (`js/auth.js`)
-**Archivo**: `e:\app\aegis-main\js\auth.js`
+**Archivo**: `e:\app\aegisboard\js\auth.js`
 
 **Funcionalidades implementadas**:
 - ✅ **Gestión de usuarios**:
@@ -47,7 +47,7 @@
   - Obtener usuarios (lectura)
   - Actualizar usuarios (edición)
   - Eliminar usuarios (borrado)
-  - Usuario admin por defecto: `admin@aegis.local` / `admin123`
+  - Usuario admin por defecto: `[Crea tu cuenta]` / `[TU_CONTRASEÑA]`
 
 - ✅ **Autenticación**:
   - Login con email/password
@@ -88,7 +88,7 @@
 ---
 
 ### 3. ✅ Panel de Administración (`admin.html`)
-**Archivo**: `e:\app\aegis-main\admin.html`
+**Archivo**: `e:\app\aegisboard\admin.html`
 
 **Características implementadas**:
 - ✅ **Dashboard de estadísticas**:
@@ -129,7 +129,7 @@
 ---
 
 ### 4. ✅ Protección de `index.html`
-**Archivo**: `e:\app\aegis-main\index.html`
+**Archivo**: `e:\app\aegisboard\index.html`
 
 **Cambios realizados**:
 - ✅ Importación de `js/auth.js` antes de otros scripts
@@ -150,7 +150,7 @@
 ---
 
 ### 5. ✅ Actualización de `quickstart.html`
-**Archivo**: `e:\app\aegis-main\quickstart.html`
+**Archivo**: `e:\app\aegisboard\quickstart.html`
 
 **Cambios realizados**:
 - ✅ Botón hero cambiado:
@@ -164,7 +164,7 @@
 ---
 
 ### 6. ✅ Traducciones (`js/translations.js`)
-**Archivo**: `e:\app\aegis-main\js\translations.js`
+**Archivo**: `e:\app\aegisboard\js\translations.js`
 
 **Nuevas claves agregadas** (22 claves en ES/EN):
 - ✅ `WELCOME_AEGIS`: "Bienvenido a Aegis" / "Welcome to Aegis"
@@ -215,8 +215,8 @@
 ## 🔐 Credenciales por Defecto
 
 ```
-Email: admin@aegis.local
-Password: admin123
+Email: [Crea tu cuenta]
+Password: [TU_CONTRASEÑA]
 Rol: admin
 ```
 
