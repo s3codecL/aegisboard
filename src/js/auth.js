@@ -12,7 +12,8 @@ const Auth = {
         sessionKey: 'aegisSession',
         usersKey: 'aegisUsers',
         tokenExpiry: 24 * 60 * 60 * 1000, // 24 horas
-        useRecaptcha: true, // Cambiar a true en producción después de configurar el sitio en Google reCAPTCHA
+        // Desactivar automáticamente si no hay keys configuradas
+        useRecaptcha: false,
         defaultUser: {
             email: '[TU_EMAIL_DE_ADMIN]',
             password: '[TU_CONTRASEÑA_SEGURA]', // En producción, usar registro o OAuth
@@ -252,6 +253,10 @@ const Auth = {
      * Login con Google (Real)
      */
     loginWithGoogle: function () {
+        if (this.config.oauth.google.clientId.includes('YOUR_')) {
+            this.showAlert('Google OAuth no configurado. Revisa la guía de configuración.', 'warning');
+            return;
+        }
         const rootUrl = 'https://accounts.google.com/o/oauth2/v2/auth';
         const options = {
             redirect_uri: window.location.origin + '/login.html',
@@ -272,6 +277,10 @@ const Auth = {
      * Login con GitHub (Real)
      */
     loginWithGithub: function () {
+        if (this.config.oauth.github.clientId.includes('YOUR_')) {
+            this.showAlert('GitHub OAuth no configurado. Revisa la guía de configuración.', 'warning');
+            return;
+        }
         const rootUrl = 'https://github.com/login/oauth/authorize';
         const options = {
             client_id: this.config.oauth.github.clientId,
@@ -641,22 +650,35 @@ const Auth = {
     initTranslations: function (lang) {
         if (typeof t === 'undefined') return;
 
+        // Actualizar elementos con data-i18n
         document.querySelectorAll('[data-i18n]').forEach(element => {
             const key = element.getAttribute('data-i18n');
             const translation = t(key, lang);
 
             if (element.tagName === 'INPUT' || element.tagName === 'TEXTAREA') {
                 element.placeholder = translation;
+            } else if (element.tagName === 'BUTTON' && element.title) {
+                // No sobreescribir botones que solo tienen icono si no hay traducción específica
             } else {
                 element.innerHTML = translation;
             }
         });
 
-        document.querySelectorAll('[data-placeholder]').forEach(element => {
-            const key = element.getAttribute('data-placeholder');
+        // Actualizar placeholders específicos
+        document.querySelectorAll('[data-i18n-placeholder]').forEach(element => {
+            const key = element.getAttribute('data-i18n-placeholder');
             const translation = t(key, lang);
             if (translation) {
                 element.placeholder = translation;
+            }
+        });
+
+        // Actualizar títulos específicos
+        document.querySelectorAll('[data-i18n-title]').forEach(element => {
+            const key = element.getAttribute('data-i18n-title');
+            const translation = t(key, lang);
+            if (translation) {
+                element.title = translation;
             }
         });
     }
