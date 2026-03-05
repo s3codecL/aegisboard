@@ -1,4 +1,4 @@
-# 🔐 Guía de Autenticación - Aegis Dashboard v1.9.0
+# 🔐 Guía de Autenticación - Aegis Dashboard v2.0.0
 
 > ⚠️ **Seguridad:** No publiques ni compartas claves privadas, tokens o secretos (como los de Google reCAPTCHA) en la documentación, ejemplos, capturas ni foros públicos.
 
@@ -8,13 +8,11 @@ La versión 1.7.0 introduce un sistema completo de autenticación que protege el
 
 ## 🚀 Inicio Rápido
 
-### Primera Vez - Usuario Admin
-1. Abrir `login.html` en el navegador
-2. Usar las credenciales por defecto:
-   - **Email**: `admin@aegisboard.dev`
-   - **Password**: `H5iI-wWw2teA?a36J9nXtñ.yW`
-3. Click en "Iniciar Sesión"
-4. Serás redirigido al dashboard principal
+### Acceso Inicial
+1. Abrir `login.html` en el navegador.
+2. **Opción A (Recomendada)**: Usar los botones de Google o GitHub para acceso directo.
+3. **Opción B**: Registrarse para crear una cuenta personal.
+4. Una vez identificado, serás redirigido al dashboard principal.
 
 ### Crear Nueva Cuenta
 1. En `login.html`, hacer click en la pestaña **"Registrarse"**
@@ -162,17 +160,8 @@ admin.html (Panel de Administración)
   token: "token_abc..."
 }
 
-// Base de datos de usuarios
-"aegisUsers": [
-  {
-    name: "Admin",
-    email: "admin@aegisboard.dev",
-    password: "YWRtaW4vYSBlZ2lzYm9hcmQuZGV2YmVzX3NhbHRfMjAyNQ==", // hash actualizado (simulado)
-    role: "admin",
-    createdAt: "2025-12-10T12:00:00.000Z",
-    lastLogin: "2025-12-10T14:30:00.000Z"
-  }
-]
+// La base de datos de usuarios almacena localmente los perfiles registrados.
+// Cada usuario debe crear su propia cuenta personal.
 ```
 
 ### sessionStorage
@@ -266,7 +255,7 @@ Necesitarás:
 
 ### No puedo acceder al panel admin
 1. Verificar que tu rol sea "admin"
-2. Iniciar sesión con `admin@aegisboard.dev` / `H5iI-wWw2teA?a36J9nXtñ.yW`
+2. Iniciar sesión con tu cuenta de administrador.
 3. Verificar que `admin.html` esté en la misma carpeta
 
 ### La sesión expira muy rápido
@@ -283,7 +272,7 @@ Necesitarás:
    localStorage.clear();
    location.reload();
    ```
-3. Iniciar sesión con credenciales por defecto
+3. Iniciar sesión con tu cuenta personal o vía OAuth.
 
 ## 📚 Recursos Adicionales
 
