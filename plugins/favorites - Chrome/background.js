@@ -10,15 +10,15 @@ chrome.runtime.onInstalled.addListener(() => {
 chrome.contextMenus.onClicked.addListener((info, tab) => {
   if (info.menuItemId === "open-in-site-favorites" && info.selectionText) {
     const query = encodeURIComponent(info.selectionText.trim());
-    const site = `https://github.com/s3codecL/aegis-main/?q=${query}`;
+    const site = `https://aegisboard.dev/index.html?q=${query}`;
 
-    chrome.tabs.create({ url: site }, (newTab) => {
-      setTimeout(() => {
-        chrome.tabs.sendMessage(newTab.id, {
-          action: "launchFavorites",
-          query: info.selectionText.trim()
-        });
-      }, 1000);
-    });
+    chrome.tabs.create({ url: site });
   }
+});
+
+// Omnibox support
+chrome.omnibox.onInputEntered.addListener((text) => {
+  const query = encodeURIComponent(text.trim());
+  const site = `https://aegisboard.dev/index.html?q=${query}`;
+  chrome.tabs.create({ url: site });
 });
