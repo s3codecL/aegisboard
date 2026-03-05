@@ -1,4 +1,4 @@
-# 🔐 Guía de Autenticación - Aegis Dashboard v1.7.0
+# 🔐 Guía de Autenticación - Aegis Dashboard v1.9.0
 
 > ⚠️ **Seguridad:** No publiques ni compartas claves privadas, tokens o secretos (como los de Google reCAPTCHA) en la documentación, ejemplos, capturas ni foros públicos.
 
@@ -121,8 +121,8 @@ admin.html (Panel de Administración)
 ### En login.html
 - `switchTab(tab)` - Cambiar entre Login/Registro
 - `showForgotPassword(e)` - Mostrar mensaje de recuperación de contraseña
-- `loginWithGoogle()` - Preparado para OAuth de Google (futuro)
-- `loginWithGithub()` - Preparado para OAuth de GitHub (futuro)
+- `loginWithGoogle()` - Iniciar flujo OAuth de Google
+- `loginWithGithub()` - Iniciar flujo OAuth de GitHub
 
 ### En js/auth.js
 - `Auth.init()` - Inicializar sistema de autenticación
@@ -181,23 +181,17 @@ admin.html (Panel de Administración)
 "aegisSession": { /* mismo formato que en localStorage */ }
 ```
 
-## 🔄 OAuth (Futuro)
+## 🔄 OAuth Integrado
 
-Los botones de Google y GitHub están preparados para integración futura:
+Los botones de Google y GitHub están completamente funcionales:
 
-### Para implementar OAuth real:
+### Implementación Real:
 
-#### Google OAuth
-```javascript
-// En js/auth.js - loginWithGoogle()
-const clientId = 'TU_GOOGLE_CLIENT_ID';
-const redirectUri = 'https://tudominio.com/oauth-callback.html';
-window.location.href = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=code&scope=email profile`;
-```
+#### Google OAuth (Flujo Implícito)
+El sistema utiliza el Client ID configurado en `src/js/auth.js` para redirigir al usuario. Al regresar, el token se procesa para obtener el perfil (nombre, email, avatar).
 
 #### GitHub OAuth
-```javascript
-// En js/auth.js - loginWithGithub()
+Redirige al usuario al portal de autorización de GitHub. El sistema está preparado para manejar el código de retorno.
 const clientId = 'TU_GITHUB_CLIENT_ID';
 const redirectUri = 'https://tudominio.com/oauth-callback.html';
 window.location.href = `https://github.com/login/oauth/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&scope=user:email`;
