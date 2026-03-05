@@ -31,8 +31,6 @@ const Auth = {
      * Inicializar sistema de autenticación
      */
     init: function () {
-        console.log('--- Aegis Auth Initialization ---');
-        console.log('Config:', this.config);
         this.loadSession();
         this.initializeDefaultUsers();
         this.setupEventListeners();
@@ -84,7 +82,7 @@ const Auth = {
         const rememberMe = document.getElementById('remember-me').checked;
 
         // FORCE BYPASS: reCAPTCHA disabled
-        if (false && this.config.useRecaptcha && typeof grecaptcha !== 'undefined') {
+        if (this.config.useRecaptcha && typeof grecaptcha !== 'undefined') {
             const widgetId = window.loginWidgetId !== undefined ? window.loginWidgetId : 0;
             const recaptchaResponse = grecaptcha.getResponse(widgetId);
             if (!recaptchaResponse) {
@@ -149,7 +147,7 @@ const Auth = {
         const acceptTerms = document.getElementById('accept-terms').checked;
 
         // FORCE BYPASS: reCAPTCHA disabled
-        if (false && this.config.useRecaptcha && typeof grecaptcha !== 'undefined') {
+        if (this.config.useRecaptcha && typeof grecaptcha !== 'undefined') {
             const widgetId = window.registerWidgetId !== undefined ? window.registerWidgetId : (window.loginWidgetId !== undefined ? 1 : 0);
             const recaptchaResponse = grecaptcha.getResponse(widgetId);
             if (!recaptchaResponse) {
