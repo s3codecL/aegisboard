@@ -1,4 +1,4 @@
-# 🔐 Guía de Autenticación - Aegis Dashboard v2.0.0
+# 🔐 Guía de Autenticación - Aegis Board v2.0.0
 
 > ⚠️ **Seguridad:** No publiques ni compartas claves privadas, tokens o secretos (como los de Google reCAPTCHA) en la documentación, ejemplos, capturas ni foros públicos.
 
