@@ -1,8 +1,9 @@
 import { translations, t } from './translations.js';
+import CryptoUtils from './crypto-utils.js';
 
 /**
- * Aegis Dashboard - Authentication System
- * Version: 1.7.2
+ * Aegis Board - Authentication System
+ * Version: 2.0.0
  */
 
 const Auth = {
@@ -13,19 +14,19 @@ const Auth = {
         tokenExpiry: 24 * 60 * 60 * 1000, // 24 horas
         useRecaptcha: true, // Cambiar a true en producción después de configurar el sitio en Google reCAPTCHA
         defaultUser: {
-            email: 'admin@aegisboard.dev',
-            password: 'H5iI-wWw2teA?a36J9nXtñ.yW', // En producción, usar hash
+            email: '[TU_EMAIL_DE_ADMIN]',
+            password: '[TU_CONTRASEÑA_SEGURA]', // En producción, usar registro o OAuth
             name: 'Administrador',
             role: 'admin',
             avatar: null
         },
         oauth: {
             github: {
-                clientId: 'Ov23ligFGZqvZYvTL2RF'
+                clientId: 'YOUR_GITHUB_CLIENT_ID' // Reemplazar con el ID de tu Configuración de Desarrollador de GitHub
                 // NOTA: El clientSecret NO debe estar en el frontend por seguridad.
             },
             google: {
-                clientId: '596461081924-jt3vmm6kjeldpcd58jp8vvuek2sj8g6e.apps.googleusercontent.com'
+                clientId: 'YOUR_GOOGLE_CLIENT_ID' // Reemplazar con el ID de Google Cloud Console
                 // NOTA: No se requiere clientSecret para el flujo implícito de Google.
             }
         }
@@ -381,7 +382,7 @@ const Auth = {
         };
 
         // Guardar en localStorage
-        localStorage.setItem(this.config.sessionKey, JSON.stringify(session));
+        localStorage.setItem(this.config.sessionKey, CryptoUtils.encrypt(session));
 
         // Si no es "recordarme", guardar también en sessionStorage
         if (!rememberMe) {
@@ -410,7 +411,7 @@ const Auth = {
         }
 
         try {
-            const session = JSON.parse(sessionData);
+            const session = CryptoUtils.decrypt(sessionData);
 
             // Verificar si la sesión ha expirado
             if (Date.now() > session.expiresAt) {
@@ -528,7 +529,7 @@ const Auth = {
     getUsers: function () {
         try {
             const users = localStorage.getItem(this.config.usersKey);
-            return users ? JSON.parse(users) : [];
+            return users ? CryptoUtils.decrypt(users) : [];
         } catch (e) {
             console.error('Error loading users:', e);
             return [];
@@ -540,7 +541,7 @@ const Auth = {
      */
     saveUsers: function (users) {
         try {
-            localStorage.setItem(this.config.usersKey, JSON.stringify(users));
+            localStorage.setItem(this.config.usersKey, CryptoUtils.encrypt(users));
         } catch (e) {
             console.error('Error saving users:', e);
         }
