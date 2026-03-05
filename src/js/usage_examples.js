@@ -1,10 +1,10 @@
 // =============================================
-// EJEMPLOS DE USO - Aegis Dashboard
+// EJEMPLOS DE USO - Aegis Board
 // =============================================
 
 /* 
   Este archivo contiene ejemplos prácticos de cómo usar
-  el Aegis Dashboard y cómo extenderlo.
+  el Aegis Board y cómo extenderlo.
 */
 
 // =============================================
@@ -458,7 +458,7 @@ const reconDomain = async (domain) => {
 
 /*
   1. Estos ejemplos son para uso en la consola del navegador
-  2. Algunos requieren que el Aegis Dashboard esté completamente cargado
+  2. Algunos requieren que el Aegis Board esté completamente cargado
   3. Para seguridad, algunos datos se guardan localmente
   4. Los URLs externos se abren en ventanas nuevas
   5. Considera las limitaciones de CORS cuando uses APIs
@@ -473,7 +473,7 @@ const reconDomain = async (domain) => {
 /*
   Copia y pega esto en la consola para hacer una prueba rápida:
 
-  console.log("=== Aegis Dashboard Información ===");
+  console.log("=== Aegis Board Información ===");
   console.log("Herramientas cargadas:", App.state.tools.length);
   console.log("Favoritos:", App.state.favorites.length);
   console.log("Búsquedas realizadas:", App.state.searches);
