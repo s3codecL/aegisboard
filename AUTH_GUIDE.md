@@ -11,8 +11,8 @@ La versión 1.7.0 introduce un sistema completo de autenticación que protege el
 ### Primera Vez - Usuario Admin
 1. Abrir `login.html` en el navegador
 2. Usar las credenciales por defecto:
-   - **Email**: `admin@aegis.local`
-   - **Password**: `admin123`
+   - **Email**: `admin@aegisboard.dev`
+   - **Password**: `H5iI-wWw2teA?a36J9nXtñ.yW`
 3. Click en "Iniciar Sesión"
 4. Serás redirigido al dashboard principal
 
@@ -165,10 +165,9 @@ admin.html (Panel de Administración)
 // Base de datos de usuarios
 "aegisUsers": [
   {
-    id: "user_123...",
     name: "Admin",
-    email: "admin@aegis.local",
-    password: "YWRtaW4xMjNhZWdpc19zYWx0XzIwMjU=", // hash
+    email: "admin@aegisboard.dev",
+    password: "YWRtaW4vYSBlZ2lzYm9hcmQuZGV2YmVzX3NhbHRfMjAyNQ==", // hash actualizado (simulado)
     role: "admin",
     createdAt: "2025-12-10T12:00:00.000Z",
     lastLogin: "2025-12-10T14:30:00.000Z"
@@ -273,7 +272,7 @@ Necesitarás:
 
 ### No puedo acceder al panel admin
 1. Verificar que tu rol sea "admin"
-2. Iniciar sesión con `admin@aegis.local` / `admin123`
+2. Iniciar sesión con `admin@aegisboard.dev` / `H5iI-wWw2teA?a36J9nXtñ.yW`
 3. Verificar que `admin.html` esté en la misma carpeta
 
 ### La sesión expira muy rápido
