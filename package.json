@@ -1,7 +1,15 @@
 {
-  "name": "aegis",
-  "version": "1.9.0",
-  "description": "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)\r [![GitHub release](https://img.shields.io/github/release/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/releases)\r [![Version](https://img.shields.io/badge/version-1.9.0-blue.svg)](changelog.md)\r [![GitHub issues](https://img.shields.io/github/issues/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/issues)\r [![GitHub stars](https://img.shields.io/github/stars/s3codecL/aegis-main.svg)](https://github.com/s3codecL/aegis-main/stargazers)\r [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)\r [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/s3codecL/aegis-main/graphs/commit-activity)",
+  "name": "aegis-board",
+  "version": "2.0.0",
+  "description": "[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)\r [![GitHub release](https://img.shields.io/github/release/s3codecL/aegisboard.svg)](https://github.com/s3codecL/aegisboard/releases)\r [![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](changelog.md)\r [![GitHub issues](https://img.shields.io/github/issues/s3codecL/aegisboard.svg)](https://github.com/s3codecL/aegisboard/issues)\r [![GitHub stars](https://img.shields.io/github/stars/s3codecL/aegisboard.svg)](https://github.com/s3codecL/aegisboard/stargazers)\r [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)\r [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/s3codecL/aegisboard/graphs/commit-activity)",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/s3codecL/aegisboard.git"
+  },
+  "bugs": {
+    "url": "https://github.com/s3codecL/aegisboard/issues"
+  },
+  "homepage": "https://github.com/s3codecL/aegisboard#readme",
   "main": "index.js",
   "scripts": {
     "dev": "vite",
