@@ -14,8 +14,8 @@ const Auth = {
         tokenExpiry: 24 * 60 * 60 * 1000, // 24 horas
         useRecaptcha: true,
         defaultUser: {
-            email: '[TU_EMAIL_DE_ADMIN]',
-            password: '[TU_CONTRASEÑA_SEGURA]', // En producción, usar registro o OAuth
+            email: 'admin@aegisboard.dev',
+            password: 'Admin2025!', // Cambiar en producción
             name: 'Administrador',
             role: 'admin',
             avatar: null
@@ -342,6 +342,12 @@ const Auth = {
             };
 
             this.createSession(user, true);
+            // Also persist OAuth user to users list for admin panel
+            const existingUsers = this.getUsers();
+            if (!existingUsers.find(u => u.id === user.id)) {
+                existingUsers.push(user);
+                this.saveUsers(existingUsers);
+            }
             this.showAlert(`¡Bienvenido, ${user.name}!`, 'success');
             setTimeout(() => window.location.href = 'index.html', 1000);
         } catch (error) {
@@ -435,7 +441,18 @@ const Auth = {
 
             // Cargar usuario completo
             const users = this.getUsers();
-            const user = users.find(u => u.id === session.userId);
+            let user = users.find(u => u.id === session.userId);
+
+            // OAuth users may not be in local DB — reconstruct from session
+            if (!user && (session.userId.startsWith('google_') || session.userId.startsWith('github_'))) {
+                user = {
+                    id: session.userId,
+                    name: session.name,
+                    email: session.email,
+                    role: session.role || 'user',
+                    avatar: session.avatar || null
+                };
+            }
 
             if (!user) {
                 this.logout(false);
@@ -542,10 +559,19 @@ const Auth = {
      */
     getUsers: function () {
         try {
-            const users = localStorage.getItem(this.config.usersKey);
-            return users ? CryptoUtils.decrypt(users) : [];
+            const raw = localStorage.getItem(this.config.usersKey);
+            if (!raw) return [];
+            const data = CryptoUtils.decrypt(raw);
+            // Ensure it's always an array
+            if (!Array.isArray(data)) {
+                console.warn('Users data is not an array, resetting...');
+                localStorage.removeItem(this.config.usersKey);
+                return [];
+            }
+            return data;
         } catch (e) {
-            console.error('Error loading users:', e);
+            console.warn('Error loading users, resetting:', e);
+            localStorage.removeItem(this.config.usersKey);
             return [];
         }
     },
@@ -695,7 +721,7 @@ window.loginWithGoogle = () => Auth.loginWithGoogle();
 window.loginWithGithub = () => Auth.loginWithGithub();
 window.showAlert = (msg, type) => Auth.showAlert(msg, type);
 
-// Auto-inicializar si estamos en login.html
-if (window.location.pathname.includes('login.html')) {
+// Auto-inicializar SOLO si NO existe login-init.js que ya lo llama
+if (window.location.pathname.includes('login.html') && typeof LoginInit === 'undefined') {
     document.addEventListener('DOMContentLoaded', () => Auth.init());
 }
