@@ -162,6 +162,8 @@ export const translations = {
     "CLOSE_TOOLTIP": "Close panel",
     "CLOSE_SIDEBAR": "Collapse Sidebar",
     "EXPAND_SIDEBAR": "Expand Sidebar",
+    "CHANGE_THEME": "Change theme",
+    "CHANGE_LANGUAGE": "Change language",
 
     // Login Placeholders
     "PLACEHOLDER_EMAIL": "you@example.com",
@@ -745,6 +747,8 @@ export const translations = {
     "CLOSE_TOOLTIP": "Cerrar panel",
     "CLOSE_SIDEBAR": "Colapsar Barra Lateral",
     "EXPAND_SIDEBAR": "Expandir Barra Lateral",
+    "CHANGE_THEME": "Cambiar tema",
+    "CHANGE_LANGUAGE": "Cambiar idioma",
 
     // Login Placeholders
     "PLACEHOLDER_EMAIL": "tu@ejemplo.com",
