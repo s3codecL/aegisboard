@@ -256,7 +256,7 @@ export const translations = {
 
     // Preguntas Frecuentes
     "QS_FAQ": "Frequently Asked Questions",
-    "QS_FAQ_Q1": "Is AEGIS HUB safe to use?",
+    "QS_FAQ_Q1": "Is Aegis Board safe to use?",
     "QS_FAQ_A1": "Completely safe. There is no backend server. All data is stored locally in your browser.",
     "QS_FAQ_Q2": "Do I need an internet connection?",
     "QS_FAQ_A2": "The interface works without internet, but you need a connection to access external OSINT tools.",
@@ -302,7 +302,7 @@ export const translations = {
 
     // Incident Management
     "INCIDENTS": "Incidents",
-    "INCIDENTS_PAGE_TITLE": "Incident Management - Aegis Dashboard",
+    "INCIDENTS_PAGE_TITLE": "Incident Management - Aegis Board",
     "INCIDENT_MANAGEMENT": "Incident Management",
     "CYBERSECURITY_INCIDENTS": "Cybersecurity Incidents",
     "NEW_INCIDENT": "New Incident",
@@ -839,7 +839,7 @@ export const translations = {
 
     // Preguntas Frecuentes
     "QS_FAQ": "Preguntas Frecuentes",
-    "QS_FAQ_Q1": "¿Es seguro usar el AEGIS HUB?",
+    "QS_FAQ_Q1": "¿Es seguro usar el Aegis Board?",
     "QS_FAQ_A1": "Completamente seguro. No hay servidor backend. Todos los datos se almacenan localmente en tu navegador.",
     "QS_FAQ_Q2": "¿Necesito conexión a internet?",
     "QS_FAQ_A2": "La interfaz funciona sin internet, pero necesitas conexión para acceder a las herramientas OSINT externas.",
@@ -885,7 +885,7 @@ export const translations = {
 
     // Gestión de Incidencias
     "INCIDENTS": "Incidencias",
-    "INCIDENTS_PAGE_TITLE": "Gestión de Incidencias - Aegis Dashboard",
+    "INCIDENTS_PAGE_TITLE": "Gestión de Incidencias - Aegis Board",
     "INCIDENT_MANAGEMENT": "Gestión de Incidencias",
     "CYBERSECURITY_INCIDENTS": "Incidencias de Ciberseguridad",
     "NEW_INCIDENT": "Nuevo Incidente",
@@ -1198,7 +1198,7 @@ export const Translations = {
     const lang = this.currentLanguage;
 
     // Update page title
-    document.title = translations[lang]["INCIDENTS_PAGE_TITLE"] || "Gestión de Incidencias - Aegis Dashboard";
+    document.title = translations[lang]["INCIDENTS_PAGE_TITLE"] || "Gestión de Incidencias - Aegis Board";
 
     // Update all elements with data-i18n
     document.querySelectorAll("[data-i18n]").forEach((el) => {
