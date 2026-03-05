@@ -5,11 +5,11 @@
 ## Estructura de Carpetas
 
 ```
-aegis-main/
+aegisboard/
 ├── index.html                 # Página principal (Dashboard)
 ├── login.html                 # Página de autenticación
 ├── admin.html                 # Panel de administración
-├── incidents.html             # Gestión de incidencias (v1.9.0)
+├── incidents.html             # Gestión de incidencias (v2.0.0)
 ├── quickstart.html            # Guía rápida
 ├── style.css                  # Estilos legado (reemplazado por src/css)
 ├── README.md                  # Documentación principal
@@ -34,9 +34,9 @@ aegis-main/
 
 ---
 
-## 🏛️ Arquitectura Modular (v1.9.0)
+## 🏛️ Arquitectura Modular (v2.0.0)
 
-A partir de la versión 1.9.0, el proyecto ha migrado a una estructura altamente modular para separar responsabilidades y facilitar el crecimiento del sistema:
+A partir de la versión 2.0.0, el proyecto ha migrado a una estructura altamente modular para separar responsabilidades y facilitar el crecimiento del sistema:
 
 - **Lógica Central (`src/js/`)**: Contiene todos los módulos ES6 que gestionan la autenticación, gestión de incidentes y lógica de la aplicación.
 - **Estilos Sistematizados (`src/css/`)**: Los estilos se han dividido en archivos específicos (main, themes, layout, forms) para evitar colisiones y facilitar la personalización de temas.
@@ -169,7 +169,7 @@ La aplicación usa localStorage para guardar:
   "aegisSearches": "42",
   "osintLanguage": "es",
   "osintTheme": "dark",
-  "aegisIncidents": "[{...}] // v1.9.0",
+  "aegisIncidents": "[{...}] // v2.0.0",
   "toolConfigVersion": "v1"
 }
 ```
@@ -663,10 +663,10 @@ if (downdetectorBtn) downdetectorBtn.title = t("DOWNDETECTOR_TOOLTIP", lang);
 **Claves de Google reCAPTCHA:**
 ```javascript
 // Site Key (pública)
-6Le4gicsAAAAAE1h_NDHNKKc6U2EXa99-tP8mnD5
+YOUR_RECAPTCHA_SITE_KEY
 
 // Secret Key (privada - NO compartir)
-6Le4gicsAAAAAEhD4yonPQyF5SGqjavH_DGLUoha
+YOUR_RECAPTCHA_SECRET_KEY
 
 // Dominios autorizados
 localhost
@@ -694,12 +694,12 @@ localhost
 ```html
 <!-- Login form -->
 <div class="g-recaptcha" 
-     data-sitekey="6Le4gicsAAAAAE1h_NDHNKKc6U2EXa99-tP8mnD5">
+     data-sitekey="YOUR_RECAPTCHA_SITE_KEY">
 </div>
 
 <!-- Register form -->
 <div class="g-recaptcha" 
-     data-sitekey="6Le4gicsAAAAAE1h_NDHNKKc6U2EXa99-tP8mnD5">
+     data-sitekey="YOUR_RECAPTCHA_SITE_KEY">
 </div>
 ```
 
@@ -797,7 +797,7 @@ function reloadRecaptchaWithLanguage(lang) {
 const axios = require('axios');
 
 async function verifyRecaptcha(token) {
-    const secretKey = '6Le4gicsAAAAAEhD4yonPQyF5SGqjavH_DGLUoha';
+    const secretKey = 'YOUR_RECAPTCHA_SECRET_KEY';
     const response = await axios.post(
         'https://www.google.com/recaptcha/api/siteverify',
         null,
@@ -835,8 +835,8 @@ async function verifyRecaptcha(token) {
 
 ### Credenciales por Defecto
 
-- **Email**: `admin@aegis.local`
-- **Password**: `admin123`
+- **Email**: `[Registro o OAuth]`
+- **Password**: `[TU_CONTRASEÑA]`
 - **Rol**: `admin`
 
 ### Funciones Principales (auth.js)
@@ -961,7 +961,7 @@ document.querySelectorAll('[data-placeholder]').forEach(el => {
 11. **Más Botones de Acceso Rápido**: Identificar y agregar más funciones frecuentes
 12. **Configuración de Accesos**: Permitir al usuario personalizar botones de acceso rápido
 
-## Sistema de Gestión de Incidencias de Ciberseguridad (v1.9.0)
+## Sistema de Gestión de Incidencias de Ciberseguridad (v2.0.0)
 
 ### Arquitectura del Módulo
 
@@ -1555,7 +1555,7 @@ Editar/Eliminar                    │
 // ... etc.
 ```
 
-### Próximas Mejoras (v1.9.0)
+### Próximas Mejoras (v2.0.0)
 
 - [ ] **Exportar a PDF/CSV**: Reportes de incidencias
 - [ ] **Timeline Visual**: Gráfico de acciones con fechas
@@ -1569,4 +1569,4 @@ Editar/Eliminar                    │
 
 ---
 
-**Última actualización**: Diciembre 2025 (v1.9.0)
+**Última actualización**: Diciembre 2025 (v2.0.0)
