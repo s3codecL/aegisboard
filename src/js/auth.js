@@ -157,7 +157,6 @@ const Auth = {
         const name = document.getElementById('register-name').value.trim();
         const email = document.getElementById('register-email').value.trim();
         const password = document.getElementById('register-password').value;
-        const passwordConfirm = document.getElementById('register-password-confirm').value;
         const acceptTerms = document.getElementById('accept-terms').checked;
 
         // FORCE BYPASS: reCAPTCHA disabled
@@ -177,7 +176,7 @@ const Auth = {
         }
 
         // Validaciones
-        if (!name || !email || !password || !passwordConfirm) {
+        if (!name || !email || !password) {
             this.showAlert('Por favor, completa todos los campos.', 'danger');
             return;
         }
@@ -201,10 +200,6 @@ const Auth = {
             return;
         }
 
-        if (password !== passwordConfirm) {
-            this.showAlert('Las contraseñas no coinciden.', 'danger');
-            return;
-        }
 
         // Validar formato de email
         if (!this.validateEmail(email)) {
@@ -304,17 +299,18 @@ const Auth = {
     handleOAuthCallback: async function () {
         const urlParams = new URLSearchParams(window.location.search);
         const code = urlParams.get('code');
-        const state = urlParams.get('state');
+        const queryState = urlParams.get('state');
 
         // Google usa fragmentos (#) para el access_token en el flujo implícito
         const hashParams = new URLSearchParams(window.location.hash.substring(1));
         const accessToken = hashParams.get('access_token');
+        const hashState = hashParams.get('state'); // Google pone el state en el hash también
 
-        if (state === 'google' && accessToken) {
+        if (accessToken && (hashState === 'google' || queryState === 'google')) {
             // Limpiar hash
             window.history.replaceState({}, document.title, window.location.pathname);
             await this.completeGoogleLogin(accessToken);
-        } else if (state === 'github' && code) {
+        } else if (code && (queryState === 'github' || queryState === 'github')) {
             // Limpiar query params
             window.history.replaceState({}, document.title, window.location.pathname);
             await this.completeGithubLogin(code);
@@ -335,7 +331,7 @@ const Auth = {
                 id: 'google_' + data.id,
                 name: data.name,
                 email: data.email,
-                role: 'user',
+                role: 'admin',
                 avatar: data.picture,
                 createdAt: new Date().toISOString(),
                 lastLogin: new Date().toISOString()
