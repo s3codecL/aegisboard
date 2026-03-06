@@ -1,4 +1,6 @@
-/* Quickstart Page - Modern Landing Aesthetic */
+html {
+    scroll-behavior: smooth;
+}
 
 body {
     background-color: var(--bg-dark);
@@ -23,34 +25,32 @@ body {
     content: '';
     position: absolute;
     top: 50%;
-    left: 50%;
+    left: 10%;
     transform: translate(-50%, -50%);
     width: 600px;
     height: 600px;
-    background: var(--color-primary);
-    filter: blur(180px);
+    background: radial-gradient(circle, rgba(59, 130, 246, 0.4) 0%, transparent 70%);
+    filter: blur(120px);
     border-radius: 50%;
-    opacity: 0.1;
+    opacity: 0.15;
     z-index: 0;
+    pointer-events: none;
 }
 
-.hero h1 {
-    font-size: clamp(2.5rem, 8vw, 4.5rem);
-    font-weight: 800;
-    /* Matching login h1 */
-    margin-bottom: 1.5rem;
-    color: var(--text);
+.hero-logo {
+    max-height: 120px;
+    width: auto;
+    margin-bottom: 2rem;
     position: relative;
     z-index: 1;
-    letter-spacing: -0.02em;
+    filter: drop-shadow(0 8px 30px rgba(0, 0, 0, 0.2));
+    transition: transform 0.3s ease;
 }
 
-.hero h1 span {
-    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+.hero-logo:hover {
+    transform: scale(1.02);
 }
+
 
 .hero p {
     font-size: clamp(1.1rem, 3vw, 1.4rem);
@@ -70,8 +70,10 @@ body {
 
 /* Sections */
 .section {
-    margin-bottom: 5rem;
-    /* Reduced room between sections */
+    margin-bottom: 8rem;
+    scroll-margin-top: 10rem;
+    position: relative;
+    z-index: 1;
 }
 
 .section h2 {
@@ -242,14 +244,255 @@ code {
     font-size: 0.9rem;
 }
 
-/* Footer */
+/* Footer Professional Refinement */
 .footer {
-    padding: 2.5rem 2rem;
-    text-align: center;
-    border-top: 1px solid rgba(59, 130, 246, 0.1);
+    padding: 6rem 0 0;
     background: rgba(0, 0, 0, 0.4);
+    border-top: 1px solid rgba(255, 255, 255, 0.03);
     position: relative;
     z-index: 10;
+}
+
+/* Navbar Professional Refinement */
+.navbar {
+    background: rgba(13, 17, 23, 0.8) !important;
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
+    padding: 0.75rem 0;
+    transition: all 0.3s ease;
+}
+
+[data-bs-theme="light"] .navbar {
+    background: rgba(255, 255, 255, 0.8) !important;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.08) !important;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+}
+
+.navbar-brand {
+    padding: 0;
+    margin-right: 2rem;
+    transition: opacity 0.3s ease;
+}
+
+.navbar-brand:hover {
+    opacity: 0.8;
+}
+
+/* Navbar Nav Overrides */
+.navbar-nav .nav-link {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    padding: 0.5rem 0.25rem !important;
+    position: relative;
+    transition: all 0.3s var(--ease-out-expo);
+}
+
+[data-bs-theme="light"] .navbar-nav .nav-link {
+    color: #4a5568 !important;
+    /* Texto gris oscuro para modo claro */
+}
+
+[data-bs-theme="light"] .navbar-nav .nav-link:hover,
+[data-bs-theme="light"] .navbar-nav .nav-link.active {
+    color: var(--color-primary) !important;
+}
+
+.navbar-nav .nav-link:hover,
+.navbar-nav .nav-link.active {
+    color: var(--color-primary);
+}
+
+.navbar-nav .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: var(--gradient-primary);
+    transition: width 0.3s ease;
+}
+
+.navbar-nav .nav-link:hover::after,
+.navbar-nav .nav-link.active::after {
+    width: 100%;
+}
+
+/* Botones Dashboard - Alta Especificidad para asegurar Azul Pro */
+body .navbar .navbar-controls a.btn-hub,
+body .navbar .btn-hub,
+body .btn-hub,
+body .btn-primary {
+    background: #3b82f6 !important;
+    background-image: linear-gradient(135deg, #3b82f6 0%, #1e40af 100%) !important;
+    color: #ffffff !important;
+    font-weight: 700 !important;
+    padding: 0.75rem 2.25rem !important;
+    border-radius: 60px !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+    box-shadow: 0 10px 25px rgba(37, 99, 235, 0.4),
+        inset 0 1px 1px rgba(255, 255, 255, 0.3) !important;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+    text-transform: none !important;
+    letter-spacing: 0.02em !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-decoration: none !important;
+    min-width: 140px;
+}
+
+body .navbar .btn-hub:hover,
+body .btn-hub:hover,
+body .btn-primary:hover {
+    transform: translateY(-3px) scale(1.02) !important;
+    box-shadow: 0 15px 35px rgba(37, 99, 235, 0.5),
+        inset 0 1px 1px rgba(255, 255, 255, 0.4) !important;
+    filter: brightness(1.2) !important;
+    color: #ffffff !important;
+}
+
+body .btn-hub:active,
+body .btn-primary:active {
+    transform: translateY(-1px) scale(0.98) !important;
+}
+
+/* Footer Refinements */
+.footer-logo {
+    height: 100px !important;
+    /* Aumentado sustancialmente para llenar el margen rojo */
+    width: auto !important;
+    max-width: 350px !important;
+    object-fit: contain;
+    transition: all 0.4s ease;
+    filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.25));
+}
+
+.footer-logo:hover {
+    transform: scale(1.03);
+}
+
+[data-bs-theme="light"] .footer-logo {
+    content: url('../../src/img/logos/Aegisboard-P.png');
+}
+
+[data-bs-theme="dark"] .footer-logo {
+    content: url('../../src/img/logos/Aegisboard-B.png');
+}
+
+.heart-icon {
+    display: inline-flex;
+    align-items: center;
+    color: #ff3e3e !important;
+    margin: 0 6px;
+    animation: heartPulse 1.5s ease-in-out infinite;
+    vertical-align: sub;
+}
+
+@keyframes heartPulse {
+    0% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+
+    50% {
+        transform: scale(1.3);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 0.8;
+    }
+}
+
+/* Footer Link Aesthetics */
+.footer-links a {
+    color: var(--text-muted);
+    font-size: 0.875rem;
+    text-decoration: none;
+    transition: all 0.2s var(--ease-out-expo);
+    opacity: 0.7;
+    display: inline-block;
+}
+
+.footer-links a:hover {
+    color: var(--color-primary);
+    opacity: 1;
+    transform: translateX(4px);
+}
+
+.max-w-300 {
+    max-width: 300px;
+}
+
+.border-white-10 {
+    border-color: rgba(255, 255, 255, 0.08) !important;
+}
+
+.header-logo {
+    height: 45px !important;
+    max-height: 45px !important;
+    width: auto !important;
+    max-width: 250px !important;
+    object-fit: contain;
+    transition: all var(--transition-base);
+    filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.1));
+}
+
+.header-logo:hover {
+    transform: scale(1.02);
+}
+
+.footer-logo {
+    height: auto !important;
+    max-height: 65px !important;
+    max-width: 100% !important;
+    width: auto !important;
+    object-fit: contain;
+    transition: all 0.3s ease;
+    filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.25));
+}
+
+[data-bs-theme="light"] .footer-logo {
+    content: url('../../src/img/logos/Aegisboard-N.png');
+}
+
+.footer-social-link {
+    width: 38px;
+    height: 38px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    transition: all 0.3s ease;
+}
+
+.footer-social-link:hover {
+    background: var(--color-primary);
+    color: white;
+    transform: translateY(-3px);
+    box-shadow: 0 5px 15px rgba(59, 130, 246, 0.3);
+}
+
+.pt-6 {
+    padding-top: 5rem !important;
+}
+
+.tracking-wider {
+    letter-spacing: 0.1em;
+}
+
+.border-white-5 {
+    border-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+[data-bs-theme="light"] .footer-logo {
+    filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.05));
 }
 
 /* Back to Top */
@@ -292,17 +535,8 @@ code {
     border-color: #e2e8f0;
 }
 
-[data-bs-theme="light"] .hero h1 {
-    color: #0f172a;
-    background: none;
-    -webkit-text-fill-color: initial;
-}
-
-[data-bs-theme="light"] .hero h1 span {
-    background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+[data-bs-theme="light"] .hero-logo {
+    filter: drop-shadow(0 4px 15px rgba(0, 0, 0, 0.15));
 }
 
 [data-bs-theme="light"] .hero p {
@@ -348,6 +582,8 @@ code {
 [data-bs-theme="light"] .faq-item p {
     color: #475569;
 }
+
+/* Anchor offsets handled globally in html tag */
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
