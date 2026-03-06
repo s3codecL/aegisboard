@@ -62,7 +62,7 @@
 
                 <!-- Idioma -->
                 <button class="btn btn-ghost" id="langToggle" title="Cambiar idioma">
-                    <span id="langText" class="fw-bold" style="font-size: 0.85rem;">ES</span>
+                    <span id="langText" class="fw-bold" style="font-size: 0.85rem;">EN</span>
                 </button>
 
                 <!-- Separador visual -->
@@ -505,7 +505,7 @@
                                                     </option>
                                                 </select>
                                             </div>
-                                            <div class="col-md-12">
+                                            <div class="col-md-6">
                                                 <label class="form-label">
                                                     <span data-i18n="SGSI_CATEGORY">Categoría SGSI</span>
                                                 </label>
@@ -513,6 +513,22 @@
                                                     <option value="" data-i18n="SELECT_PLACEHOLDER">-- Seleccionar --
                                                     </option>
                                                 </select>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label class="form-label">
+                                                    <span data-i18n="SGSI_SUBCATEGORY">Subcategoría</span>
+                                                </label>
+                                                <input type="text" class="form-control" id="incidentSgsiSubcategory"
+                                                    data-i18n-placeholder="SGSI_SUBCATEGORY_PLACEHOLDER"
+                                                    placeholder="Subcategoría o control afectado">
+                                            </div>
+                                            <div class="col-md-12">
+                                                <label class="form-label">
+                                                    <span data-i18n="AFFECTED_ASSET">Activo Afectado</span>
+                                                </label>
+                                                <input type="text" class="form-control" id="incidentAsset"
+                                                    data-i18n-placeholder="AFFECTED_ASSET_PLACEHOLDER"
+                                                    placeholder="Servidor, Base de datos, Endpoint, etc.">
                                             </div>
                                             <div class="col-md-12">
                                                 <div class="alert alert-info mb-0">
@@ -826,7 +842,8 @@
         function updateLangButton(lang) {
             const langText = document.getElementById("langText");
             if (langText) {
-                langText.textContent = lang.toUpperCase();
+                // Show the TARGET language (inverted from current)
+                langText.textContent = lang === 'es' ? 'EN' : 'ES';
             }
         }
 
