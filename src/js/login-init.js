@@ -54,7 +54,7 @@ const LoginInit = {
         const lang = localStorage.getItem('osintLanguage') || 'es';
         if (Auth.initTranslations) Auth.initTranslations(lang);
 
-        // Update Icons and Lang Text
+        // Update Icons, Lang Text and Main Logo
         this.updateIcons(savedTheme);
         const langBtnText = document.getElementById('lang-text');
         if (langBtnText) {
@@ -140,6 +140,12 @@ const LoginInit = {
         // In dark mode: show sun (to switch to light). In light mode: show moon (to switch to dark).
         if (sun) sun.style.display = theme === 'dark' ? 'inline-block' : 'none';
         if (moon) moon.style.display = theme === 'dark' ? 'none' : 'inline-block';
+
+        // Update main logo
+        const mainLogo = document.querySelector('.login-logo');
+        if (mainLogo) {
+            mainLogo.src = theme === 'dark' ? 'logos/Aegisboard-PB.png' : 'logos/Aegisboard-P.png';
+        }
     },
 
     applyTranslations: function (lang) {
