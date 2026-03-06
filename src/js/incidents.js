@@ -894,8 +894,10 @@ const IncidentManager = {
 
     updateThemeIcons: function (currentTheme) {
         currentTheme = currentTheme || document.documentElement.getAttribute("data-bs-theme");
-        const iconLight = document.getElementById("iconLight");
-        const iconDark = document.getElementById("iconDark");
+        const themeToggle = document.getElementById('theme-toggle');
+        if (!themeToggle) return;
+        const iconLight = themeToggle.querySelector('.icon-sun');
+        const iconDark = themeToggle.querySelector('.icon-moon');
 
         if (iconLight && iconDark) {
             if (currentTheme === "dark") {
