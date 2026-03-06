@@ -302,7 +302,7 @@ export const translations = {
     "QS_INSTALL_OPEN": "Open index.html in your browser",
     "QS_INSTALL_OPTION2": "# Option 2: Use local server",
     "QS_INSTALL_ACCESS": "# Then access:",
-    "QS_INSTALL_CODE": "# Option 1: Open directly\nOpen index.html in your browser\n\n# Option 2: Use local server\npython -m http.server 8000\n\n# Then access:\nhttp://localhost:8000",
+    "QS_INSTALL_CODE": "# Access directly via browser:\nhttps://aegisboard.dev\n\n# Or clone for local usage:\ngit clone https://github.com/s3codecL/aegisboard.git",
 
     // Documentación
     "QS_DOCUMENTATION": "Documentation",
@@ -990,7 +990,7 @@ export const translations = {
     "QS_INSTALL_OPEN": "Abre index.html en tu navegador",
     "QS_INSTALL_OPTION2": "# Opción 2: Usar servidor local",
     "QS_INSTALL_ACCESS": "# Luego accede a:",
-    "QS_INSTALL_CODE": "# Opción 1: Abrir directamente\nAbre index.html en tu navegador\n\n# Opción 2: Usar servidor local\npython -m http.server 8000\n\n# Luego accede a:\nhttp://localhost:8000",
+    "QS_INSTALL_CODE": "# Accede directamente vía navegador:\nhttps://aegisboard.dev\n\n# O clona para uso local:\ngit clone https://github.com/s3codecL/aegisboard.git",
 
     // Documentación
     "QS_DOCUMENTATION": "Documentación",
