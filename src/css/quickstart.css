@@ -374,11 +374,11 @@ body .btn-primary:active {
 }
 
 [data-bs-theme="light"] .footer-logo {
-    content: url('../../src/img/logos/Aegisboard-P.png');
+    content: url('/logos/Aegisboard-P.png');
 }
 
 [data-bs-theme="dark"] .footer-logo {
-    content: url('../../src/img/logos/Aegisboard-B.png');
+    content: url('/logos/Aegisboard-B.png');
 }
 
 .heart-icon {
@@ -456,7 +456,7 @@ body .btn-primary:active {
 }
 
 [data-bs-theme="light"] .footer-logo {
-    content: url('../../src/img/logos/Aegisboard-N.png');
+    content: url('/logos/Aegisboard-N.png');
 }
 
 .footer-social-link {
