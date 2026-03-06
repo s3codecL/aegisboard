@@ -1,9 +1,9 @@
 .navbar {
     background: var(--panel-header-bg) !important;
     color: var(--text) !important;
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
-    border-bottom: 1px solid var(--border);
+    backdrop-filter: blur(16px) !important;
+    -webkit-backdrop-filter: blur(16px) !important;
+    border-bottom: 1px solid var(--border) !important;
     padding: 0.5rem 0;
     /* Adjusted from 0.75rem for better balance */
     box-shadow: var(--glass-shadow);
