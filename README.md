@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="src/img/logos/Aegisboard-P.png" alt="Aegisboard Logo" width="300">
+  <img src="src/img/logos/Aegisboard-PB.png" alt="Aegisboard Logo" width="300">
 </div>
 
 
