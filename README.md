@@ -1,17 +1,25 @@
+<div align="center">
+  <img src="src/img/logos/Aegisboard-P.png" alt="Aegisboard Logo" width="300">
+</div>
+
 # 🛡️ Aegis Board - Herramienta de Investigación
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![GitHub release](https://img.shields.io/github/release/s3codecL/aegisboard.svg)](https://github.com/s3codecL/aegisboard/releases)
-[![Version](https://img.shields.io/badge/version-2.0.0-blue.svg)](changelog.md)
+[![Version](https://img.shields.io/badge/version-2.0.0--rc.1-blue.svg)](changelog.md)
 [![GitHub issues](https://img.shields.io/github/issues/s3codecL/aegisboard.svg)](https://github.com/s3codecL/aegisboard/issues)
 [![GitHub stars](https://img.shields.io/github/stars/s3codecL/aegisboard.svg)](https://github.com/s3codecL/aegisboard/stargazers)
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](CONTRIBUTING.md)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/s3codecL/aegisboard/graphs/commit-activity)
 
-Una herramienta moderna y funcional de **Open Source Intelligence (OSINT)** diseñada para investigadores de seguridad, analistas de amenazas y profesionales de ciberseguridad.
+Una herramienta moderna y funcional de **Open Source Intelligence (OSINT)** diseñada para investigadores de seguridad, analistas de amenazas y profesionales de ciberseguridad. Accesible de forma global en **[aegisboard.dev](https://aegisboard.dev)**.
 
-## 🚀 Novedades v2.0.0
+## 🚀 Novedades v2.0.0-rc.1 (Release Candidate)
 
+- **Distribución Oficial Cloud**: Lanzamiento del dominio `aegisboard.dev` centralizado, eliminando la necesidad de instalaciones locales e instanciaciones por línea de comandos.
+- **Flujo de Traducciones Completo**: Corrección sistemática con +130 nuevas claves bilingües y persistencia estable en todos los módulos, incluyendo Dashboard, Admin, e Incidentes.
+- **Persistencia de Temas (Dark/Light)**: Solucionado el conflicto de estilos modulares que reseteaban la interfaz. Interfaz visual unificada con modo claro premium (glassmorphism).
+- **Estabilidad SemVer**: Adaptación de release candidate para la fase de pruebas abierta de la nueva arquitectura de Incident Management.
 - **Persistencia de Datos**: Corrección en el mapeo de áreas (`OP` standardized) e integridad de formularios al editar.
 - **Arquitectura Modular**: Organización limpia de archivos separando lógica (`src/js`) y estilos (`src/css`) para mayor escalabilidad.
 
@@ -226,36 +234,22 @@ Para contribuir con screenshots, consulta [.github/images/README.md](.github/ima
 
 ## 🚀 Inicio Rápido
 
-### Requisitos
-- Navegador web moderno (Chrome, Firefox, Safari, Edge)
-- Conexión a internet (para acceder a las herramientas OSINT)
+## 🚀 Inicio Rápido
 
-### Instalación Rápida
+### Acceso a la Plataforma Web
+Aegis Board está alojado globalmente y puedes acceder directamente sin instalaciones previas:
 
-1. **Clonar o descargar el repositorio**
-```bash
-git clone https://github.com/s3codecL/aegisboard.git
-cd aegisboard
-```
+1. Ingresa a **[aegisboard.dev](https://aegisboard.dev)** desde tu navegador (Chrome, Firefox, Safari, Edge).
+2. Lee la guía **Quickstart** para familiarizarte con el panel.
+3. Regístrate en la plataforma y accede a tu propio Dashboard OSINT.
 
-2. **Abrir en navegador**
-   - **Opción 1 (Recomendada)**: Abre `index.html` directamente en tu navegador
-   - **Opción 2**: Sirve los archivos usando un servidor local:
-```bash
-# Python 3
-python -m http.server 8000
-
-# Node.js (http-server)
-npx http-server
-```
-
-3. **Acceder**
-   - Si usaste servidor local: `http://localhost:8000`
-   - De lo contrario, simplemente haz doble clic en `index.html`
+### Requisitos Mínimos
+- Conexión a internet estable.
+- Navegador actualizado con soporte para LocalStorage.
 
 ### 📄 Archivos Principales
 
-El proyecto incluye cuatro interfaces principales:
+El proyecto incluye cuatro interfaces principales interconectadas:
 
 #### 🔐 `login.html` - Página de Autenticación (NUEVO en v1.7.0)
 **Cuándo usar**: Primera página para acceder al dashboard
@@ -434,7 +428,9 @@ aegisboard/
 ├── login.html             # 🔐 Página de autenticación de usuarios
 ├── README.md              # Este archivo - Documentación del proyecto
 ├── src/                   # 📁 Archivos de origen (Modernizados)
-│   ├── css/               # Estilos CSS modulares
+│   ├── css/               # Estilos CSS modulares y utilidades
+│   ├── img/               # 📁 Imágenes estáticas
+│   │   └── logos/         # Logos de branding (Aegisboard-P, -N, -B)
 │   └── js/                # Módulos JavaScript (ES6)
 │       ├── app.js            # Lógica principal y punto de entrada
 │       ├── auth.js           # Módulo de autenticación y sesiones
@@ -443,7 +439,7 @@ aegisboard/
 │       ├── tools-config.js   # Configuración de herramientas
 │       ├── translations.js   # Internacionalización (ES/EN)
 │       └── usage_examples.js # Ejemplos de uso
-└── plugins/               # Extensiones del navegador
+└── plugins/               # Extensiones del navegador y configs experimentales
 ```
 
 ### 📝 Descripción de Archivos Clave
@@ -461,11 +457,12 @@ aegisboard/
 
 ## 🛠️ Tecnologías Utilizadas
 
-- **HTML5**: Estructura semántica
-- **CSS3**: Diseño moderno con variables CSS
-- **JavaScript Vanilla**: Sin dependencias externas
-- **Bootstrap 5**: (CDN) para componentes base
-- **LocalStorage API**: Para persistencia de datos
+- **Vite**: Entorno de desarrollo ultrarrápido y bundler.
+- **HTML5 & CSS3**: Estructura semántica y diseño moderno (Glassmorphism, CSS Variables).
+- **JavaScript Vanilla (ES6)**: Módulos puros sin dependencias pesadas (React/Angular/Vue).
+- **Bootstrap 5**: (CDN) para sistema de grillas, componentes ui y modales.
+- **LocalStorage API**: Persistencia de datos client-side sin backend.
+- **Git/GitHub Actions**: CI/CD para el despliegue automático en dominio principal.
 
 ## 🎨 Paleta de Colores
 
@@ -620,7 +617,13 @@ Copyright (c) 2025 s3codecL - Todos los derechos reservados bajo los términos d
 
 🗺️ Roadmap
 ✅ Completado
-## [2.0.0] - 2026-03-05
+
+## [2.1.0-beta.1] - Próximamente (Release Final RC)
+- [x] **Dominio Establecido (`aegisboard.dev`)**: Distribución nativa mediante entorno escalable.
+- [x] **Branding Oficial**: Inclusión de logotipo profesional en la documentación y web app.
+- [x] **Traducciones Masivas y Persistencia**: Errores corregidos en el manejo de persistencia e inconsistencias modulares.
+
+## [2.0.0] - Mayor Release (Marzo 2026)
 
 ### 🛡️ OAuth & Security Major Release
 - [x] **Autenticación OAuth 2.0**: Integración segura con Google y GitHub (flujo implícito).
