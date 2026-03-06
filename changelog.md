@@ -2,16 +2,18 @@
 
 > ⚠️ **Seguridad:** No publiques ni compartas claves privadas, tokens o secretos (como los de Google reCAPTCHA) en la documentación, ejemplos, capturas ni foros públicos.
 
-## [2.0.0] - 2026-03-05
+## [2.0.0-rc.1] - 2026-03-06
 ### Añadido
-- **Autenticación OAuth 2.0**: Integración completa y segura con Google (flujo implícito) y GitHub.
-- **Manifest V3**: Extensión de navegador migrada a MV3 con nueva UI Glassmorphism.
-- **Omnibox Support**: Búsqueda directa desde la barra de direcciones con el prefijo `aegis`.
-- **Placeholder Seguro**: Reemplazo de credenciales legacy por placeholders dinámicos.
+- **Dominio Oficial Establecido**: Distribución oficial trasladada a `aegisboard.dev`, desactivando las instrucciones de instalación en red local.
+- **Branding y Logotipo Profesional**: Adición de la familia de logotipos `Aegisboard-P` a la documentación principal y componentes web (modo claro y oscuro).
+- **Traducciones Masivas y Persistencia**: Integración definitiva de más de 130 nuevas claves bilingües y corrección en fallos persistentes de estado UI.
 
 ### Cambiado
-- **Repositorio**: Renombrado oficial a `aegisboard`.
-- **Documentación**: Estandarización completa de guías técnicas y de usuario.
+- **Estructura Arquitectónica**: Reorganización estandarizada del código y actualización del stack tecnológico (Vite, dependencias Vanilla, Storage Local).
+
+## [2.0.0] - Mayor Release (Marzo 2026)
+### Añadido
+- **Autenticación OAuth 2.0**: Integración completa y segura con Google (flujo implícito) y GitHub.
 
 ## [2.0.0] - 2026-03-05
 ### Added
