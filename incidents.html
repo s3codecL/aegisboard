@@ -801,6 +801,9 @@
             document.documentElement.setAttribute("data-bs-theme", savedTheme);
             updateThemeIcon(savedTheme);
 
+            const lang = localStorage.getItem('osintLanguage') || 'es';
+            updateLangButton(lang);
+
             // 🔑 CRITICAL: Initialize the IncidentManager (attaches all event listeners)
             window.IncidentManager = IncidentManager;
             IncidentManager.init();
@@ -885,10 +888,11 @@
                 <!-- 2. Comunidad -->
                 <div class="col-lg-6 text-center">
                     <h6 class="footer-title text-white text-uppercase tracking-wider fw-bold mb-4"
-                        style="font-size: 0.75rem;">Únete
+                        style="font-size: 0.75rem;" data-i18n="QS_COMMUNITY">Únete
                         a
                         la Comunidad</h6>
-                    <p class="text-muted small mb-4">Mantente conectado con las últimas actualizaciones y herramientas.
+                    <p class="text-muted small mb-4" data-i18n="QS_FOOTER_DESC">Mantente conectado con las últimas
+                        actualizaciones y herramientas.
                     </p>
                     <div class="footer-social-container d-flex justify-content-center gap-3">
                         <a href="https://github.com/s3codecL" target="_blank" class="footer-social-link" title="GitHub">
