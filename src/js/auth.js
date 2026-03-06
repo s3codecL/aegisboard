@@ -322,10 +322,20 @@ const Auth = {
      */
     completeGoogleLogin: async function (token) {
         try {
-            const response = await fetch('https://www.googleapis.com/oauth2/v2/userinfo', {
+            console.log('Finalizando login de Google...');
+            // v3 is the current recommended endpoint
+            const response = await fetch('https://www.googleapis.com/oauth2/v3/userinfo', {
                 headers: { Authorization: `Bearer ${token}` }
             });
+
+            if (!response.ok) {
+                const errorData = await response.json().catch(() => ({}));
+                console.error('Google Userinfo API Error:', response.status, errorData);
+                throw new Error(errorData.error_description || errorData.error || `HTTP ${response.status}`);
+            }
+
             const data = await response.json();
+            console.log('Google Userinfo data received:', data);
 
             const user = {
                 id: 'google_' + data.id,
@@ -347,12 +357,19 @@ const Auth = {
             this.showAlert(`¡Bienvenido, ${user.name}!`, 'success');
             setTimeout(() => window.location.href = 'index.html', 1000);
         } catch (error) {
-            console.error('Error Google OAuth:', error);
+            console.error('Error Crítico Google OAuth:', error);
+
             // Check if it's a network/CORS error vs API error
-            const isNetworkError = error instanceof TypeError && error.message.includes('fetch');
-            const msg = isNetworkError
-                ? 'Error de red al conectar con Google. Verifica tu conexión o la configuración de OAuth.'
-                : `Error al conectar con Google: ${error.message || 'Error desconocido'}.`;
+            const isNetworkError = error instanceof TypeError || error.message?.includes('fetch') || error.message?.includes('Network');
+
+            let msg = '';
+            if (isNetworkError) {
+                msg = 'Error de red al conectar con Google. Esto suele deberse a bloqueadores de anuncios (ad-block), protección contra rastreo del navegador o problemas de CORS.';
+                console.warn('Sugerencia: Prueba desactivando el bloqueador de anuncios o revisa la consola de red.');
+            } else {
+                msg = `Error al conectar con Google: ${error.message || 'Error desconocido'}.`;
+            }
+
             this.showAlert(msg, 'danger');
         }
     },
