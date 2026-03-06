@@ -763,7 +763,7 @@ const App = {
     // Update logos
     const footerLogo = document.getElementById('footer-logo');
     if (footerLogo) {
-      footerLogo.src = newTheme === 'dark' ? 'src/img/logos/Aegisboard-B.png' : 'src/img/logos/Aegisboard-N.png';
+      footerLogo.src = newTheme === 'dark' ? 'logos/Aegisboard-B.png' : 'logos/Aegisboard-N.png';
     }
   },
 
@@ -775,7 +775,7 @@ const App = {
     // Initialize logos
     const footerLogo = document.getElementById('footer-logo');
     if (footerLogo) {
-      footerLogo.src = this.config.currentTheme === 'dark' ? 'src/img/logos/Aegisboard-B.png' : 'src/img/logos/Aegisboard-N.png';
+      footerLogo.src = this.config.currentTheme === 'dark' ? 'logos/Aegisboard-B.png' : 'logos/Aegisboard-N.png';
     }
   },
 
